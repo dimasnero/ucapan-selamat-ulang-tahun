@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Animasi Bunga Menyatu & Sangat Tinggi</title>
+    <style>
+         :root {
+            --bg: #080b13;
+            --stem: #103318;
+            --stem-center: #164d27;
+            --leaf-dark: #0a1f11;
+            --leaf-mid: #0f301a;
+            --leaf-light: #164d27;
+            --flower: #f99ab0;
+            --flower-bright: #ffb1c3;
+            --heart: #ff6b8f;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        /* Efek Kunang-Kunang */
+        
+        .firefly {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffca28;
+            border-radius: 50%;
+            box-shadow: 0 0 8px 2px rgba(255, 202, 40, 0.8);
+            animation: twinkle infinite alternate;
+        }
+        
+        .f1 {
+            top: 20%;
+            left: 20%;
+            animation-duration: 2s;
+        }
+        
+        .f2 {
+            top: 40%;
+            left: 80%;
+            animation-duration: 3s;
+        }
+        
+        .f3 {
+            top: 30%;
+            left: 50%;
+            animation-duration: 1.5s;
+        }
+        
+        .f4 {
+            top: 60%;
+            left: 30%;
+            animation-duration: 2.5s;
+        }
+        
+        .f5 {
+            top: 50%;
+            left: 70%;
+            animation-duration: 3.5s;
+        }
+        
+        @keyframes twinkle {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+        /* Container Hati Melayang */
+        
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .heart-ring {
+            position: absolute;
+            border: 2px solid rgba(255, 107, 143, 0.4);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: -100px;
+            animation: floatHeart linear infinite;
+        }
+        
+        .heart-ring::after {
+            content: '❤';
+            color: var(--heart);
+        }
+        
+        .solid-heart {
+            position: absolute;
+            bottom: -100px;
+            color: var(--heart);
+            animation: floatHeart linear infinite;
+        }
+        
+        .solid-heart::after {
+            content: '❤';
+        }
+        
+        .h1 {
+            left: 15%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            animation-duration: 7s;
+            animation-delay: 0s;
+        }
+        
+        .h2 {
+            left: 80%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            animation-duration: 6s;
+            animation-delay: 2s;
+        }
+        
+        .h3 {
+            left: 30%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            animation-duration: 9s;
+            animation-delay: 4s;
+        }
+        
+        .h4 {
+            left: 70%;
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
+            animation-duration: 5s;
+            animation-delay: 1s;
+        }
+        
+        .h5 {
+            left: 45%;
+            font-size: 20px;
+            animation-duration: 6s;
+            animation-delay: 3s;
+        }
+        
+        .h6 {
+            left: 60%;
+            font-size: 15px;
+            animation-duration: 4.5s;
+            animation-delay: 0.5s;
+        }
+        
+        .h7 {
+            left: 25%;
+            font-size: 18px;
+            animation-duration: 5.5s;
+            animation-delay: 2.5s;
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) scale(0.6);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+        /* Tanaman Utama (Ketinggian dimaksimalkan hingga 800px) */
+        
+        .plant {
+            position: relative;
+            width: 320px;
+            height: 800px;
+            /* Ditinggikan signifikan */
+            transform-origin: bottom center;
+            transform: scale(var(--plant-scale, 1));
+        }
+        /* Rumput Panjang (Ditinggikan) */
+        
+        .grass {
+            position: absolute;
+            bottom: 0;
+            width: 4px;
+            background: var(--leaf-light);
+            border-radius: 4px 4px 0 0;
+            transform-origin: bottom center;
+            transform: rotate(var(--r)) scaleY(1);
+            animation: growRotate 1.5s ease-out forwards;
+        }
+        
+        .g1 {
+            left: 80px;
+            height: 360px;
+            --r: -22deg;
+        }
+        
+        .g2 {
+            left: 100px;
+            height: 240px;
+            --r: -35deg;
+        }
+        
+        .g3 {
+            right: 80px;
+            height: 380px;
+            --r: 22deg;
+        }
+        
+        .g4 {
+            right: 100px;
+            height: 260px;
+            --r: 35deg;
+        }
+        /* Daun Semak Bawah */
+        
+        .bush-leaf {
+            position: absolute;
+            bottom: -15px;
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            transform: rotate(var(--r)) scaleY(1);
+            animation: growRotate 1.5s ease-out forwards;
+        }
+        
+        .bl1 {
+            left: 90px;
+            width: 50px;
+            height: 120px;
+            background: var(--leaf-mid);
+            --r: -50deg;
+            z-index: 2;
+        }
+        
+        .bl2 {
+            left: 105px;
+            width: 60px;
+            height: 160px;
+            background: var(--leaf-dark);
+            --r: -25deg;
+            z-index: 1;
+        }
+        
+        .bl3 {
+            left: 130px;
+            width: 60px;
+            height: 190px;
+            background: var(--leaf-light);
+            --r: 0deg;
+            z-index: 6;
+        }
+        
+        .bl4 {
+            left: 155px;
+            width: 60px;
+            height: 160px;
+            background: var(--leaf-dark);
+            --r: 25deg;
+            z-index: 1;
+        }
+        
+        .bl5 {
+            left: 180px;
+            width: 50px;
+            height: 120px;
+            background: var(--leaf-mid);
+            --r: 50deg;
+            z-index: 2;
+        }
+        /* Wrapper Batang */
+        
+        .stem-wrapper {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: bottom center;
+            left: 0;
+        }
+        
+        .sw1 {
+            --stem-angle: -35deg;
+            --sway-delay: 1.2s;
+            z-index: 1;
+            animation: stem-sway 3s ease-in-out var(--sway-delay) infinite alternate;
+        }
+        
+        .sw2 {
+            --stem-angle: -16deg;
+            --sway-delay: 1.5s;
+            z-index: 3;
+            animation: stem-sway 3.3s ease-in-out var(--sway-delay) infinite alternate;
+        }
+        
+        .sw3 {
+            --stem-angle: 0deg;
+            --sway-delay: 1.3s;
+            z-index: 5;
+            animation: stem-sway 3.6s ease-in-out var(--sway-delay) infinite alternate;
+        }
+        
+        .sw4 {
+            --stem-angle: 16deg;
+            --sway-delay: 1.7s;
+            z-index: 4;
+            animation: stem-sway 3.3s ease-in-out var(--sway-delay) infinite alternate;
+        }
+        
+        .sw5 {
+            --stem-angle: 35deg;
+            --sway-delay: 1.4s;
+            z-index: 2;
+            animation: stem-sway 3s ease-in-out var(--sway-delay) infinite alternate;
+        }
+        /* Batang (Ditinggikan Drastis) */
+        
+        .stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 7px;
+            background: var(--stem);
+            border-radius: 5px;
+            transform-origin: bottom center;
+            animation: growStem 2.5s ease-out forwards;
+        }
+        
+        .sw1 .stem {
+            height: 430px;
+        }
+        
+        .sw2 .stem {
+            height: 530px;
+        }
+        
+        .sw3 .stem {
+            height: 680px;
+            width: 10px;
+            background: var(--stem-center);
+        }
+        /* Batang tengah menjulang sangat tinggi */
+        
+        .sw4 .stem {
+            height: 580px;
+        }
+        
+        .sw5 .stem {
+            height: 450px;
+        }
+        /* Bunga (Posisi dinaikkan sangat tinggi) */
+        
+        .flower {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            width: 50px;
+            height: 40px;
+            transform-origin: bottom center;
+            animation: bloom 1s ease-out 1.5s forwards, sway 4s infinite alternate ease-in-out 2.5s;
+        }
+        /* Posisi disesuaikan agar pas di ujung batang yang super tinggi */
+        
+        .sw1 .flower {
+            bottom: 420px;
+        }
+        
+        .sw2 .flower {
+            bottom: 520px;
+        }
+        
+        .sw3 .flower {
+            bottom: 670px;
+            animation: bloom-center 1.2s ease-out 1.5s forwards, sway-center 4s infinite alternate ease-in-out 2.7s;
+        }
+        
+        .sw4 .flower {
+            bottom: 570px;
+        }
+        
+        .sw5 .flower {
+            bottom: 440px;
+        }
+        /* Kelopak Biasa */
+        
+        .petal {
+            position: absolute;
+            bottom: 0;
+            width: 25px;
+            height: 38px;
+            background: var(--flower);
+            border-radius: 50% 50% 20% 20%;
+            transform-origin: bottom center;
+            box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Kelopak Bunga Tengah */
+        
+        .sw3 .petal {
+            background: var(--flower-bright);
+            box-shadow: 0 0 12px rgba(255, 177, 195, 0.4), inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .p1 {
+            left: 12.5px;
+            transform: rotate(-45deg);
+        }
+        
+        .p2 {
+            left: 12.5px;
+            transform: rotate(-15deg);
+        }
+        
+        .p3 {
+            left: 12.5px;
+            transform: rotate(15deg);
+        }
+        
+        .p4 {
+            left: 12.5px;
+            transform: rotate(45deg);
+        }
+        /* Putik Tengah */
+        
+        .flower-center {
+            position: absolute;
+            bottom: 12px;
+            left: 17px;
+            width: 16px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 5;
+        }
+        
+        .flower-center::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            background: #ffca28;
+            border-radius: 50%;
+        }
+        /* Keyframes Animasi */
+
+        @keyframes stem-sway {
+            from {
+                transform: rotate(calc(var(--stem-angle) - 1.5deg));
+            }
+            to {
+                transform: rotate(calc(var(--stem-angle) + 1.5deg));
+            }
+        }
+        
+        @keyframes growRotate {
+            0% {
+                transform: rotate(var(--r)) scaleY(0);
+            }
+            100% {
+                transform: rotate(var(--r)) scaleY(1);
+            }
+        }
+        
+        @keyframes growStem {
+            0% {
+                transform: scaleY(0);
+            }
+            100% {
+                transform: scaleY(1);
+            }
+        }
+        /* Bunga Mekar Jauh Lebih Besar (Scale 1.5) */
+        
+        @keyframes bloom {
+            to {
+                transform: translateX(-50%) scale(1.5);
+            }
+        }
+        
+        @keyframes sway {
+            0% {
+                transform: translateX(-50%) scale(1.5) rotate(-4deg);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.5) rotate(4deg);
+            }
+        }
+        /* Bunga Tengah Sangat Besar (Scale 1.9) */
+        
+        @keyframes bloom-center {
+            to {
+                transform: translateX(-50%) scale(1.9);
+            }
+        }
+        
+        @keyframes sway-center {
+            0% {
+                transform: translateX(-50%) scale(1.9) rotate(-3deg);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.9) rotate(3deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Efek Kunang-Kunang -->
+    <div class="firefly f1"></div>
+    <div class="firefly f2"></div>
+    <div class="firefly f3"></div>
+    <div class="firefly f4"></div>
+    <div class="firefly f5"></div>
+
+    <!-- Buble Hati Melayang -->
+    <div class="heart-container">
+        <div class="heart-ring h1"></div>
+        <div class="heart-ring h2"></div>
+        <div class="heart-ring h3"></div>
+        <div class="heart-ring h4"></div>
+        <div class="solid-heart h5"></div>
+        <div class="solid-heart h6"></div>
+        <div class="solid-heart h7"></div>
+    </div>
+
+    <div class="plant">
+        <!-- Rumput Panjang Kiri Kanan -->
+        <div class="grass g1"></div>
+        <div class="grass g2"></div>
+        <div class="grass g3"></div>
+        <div class="grass g4"></div>
+
+        <!-- 5 Tangkai Bunga Menyatu -->
+        <div class="stem-wrapper sw1">
+            <div class="stem"></div>
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="flower-center"></div>
+            </div>
+        </div>
+        <div class="stem-wrapper sw2">
+            <div class="stem"></div>
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="flower-center"></div>
+            </div>
+        </div>
+
+        <!-- BUNGA TENGAH (Paling Besar & Sangat Tinggi) -->
+        <div class="stem-wrapper sw3">
+            <div class="stem"></div>
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="flower-center"></div>
+            </div>
+        </div>
+
+        <div class="stem-wrapper sw4">
+            <div class="stem"></div>
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="flower-center"></div>
+            </div>
+        </div>
+        <div class="stem-wrapper sw5">
+            <div class="stem"></div>
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="flower-center"></div>
+            </div>
+        </div>
+
+        <!-- Semak Daun -->
+        <div class="bush-leaf bl1"></div>
+        <div class="bush-leaf bl2"></div>
+        <div class="bush-leaf bl3"></div>
+        <div class="bush-leaf bl4"></div>
+        <div class="bush-leaf bl5"></div>
+    </div>
+
+    <script>
+        function fitPlantToScreen() {
+            const viewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+            const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+            const scale = Math.min(1, viewportWidth / 640, viewportHeight / 800);
+            document.documentElement.style.setProperty('--plant-scale', scale);
+        }
+
+        fitPlantToScreen();
+        window.addEventListener('resize', fitPlantToScreen);
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', fitPlantToScreen);
+        }
+    </script>
+</body>
+
+</html>

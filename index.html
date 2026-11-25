@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="background-music" autoplay loop preload="auto">
+        <source src="backsound.m4a" type="audio/mp4">
+        Browser kamu tidak mendukung pemutar audio.
+    </audio>
+    <button id="music-toggle" class="music-toggle" type="button" aria-label="Putar backsound" aria-pressed="false">
+        ▶ Putar backsound
+    </button>
+
+    <div id="page-login" class="page active">
+        <h1 class="title-font">A Little Surprise</h1>
+        <form id="birthday-login-form" class="login-form">
+            <label for="birthday-input">Masukkan tanggal ulang tahunmu</label>
+            <input id="birthday-input" name="birthday" type="text" inputmode="numeric" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10" placeholder="DD-MM-YYYY" aria-describedby="login-error" required>
+            <button type="submit" class="login-btn">Buka kejutan</button>
+            <p id="login-error" class="login-error" role="alert" aria-live="polite"></p>
+        </form>
+    </div>
+
+    <div id="page-envelope" class="page hidden">
+        <h1 class="title-font">Press the Envelope</h1>
+        <button id="btn-open-envelope" class="envelope" type="button" aria-label="Buka amplop">💌</button>
+        <p class="subtitle">tap to lanjut</p>
+    </div>
+
+    <div id="page-menu" class="page hidden">
+        <h1 class="title-font">Choose the Surprise</h1>
+        <div class="menu-container">
+            <button class="menu-item" type="button" data-content="journey">
+                <span class="icon-glow" aria-hidden="true">📸</span>
+                <p>Journey</p>
+            </button>
+            <button class="menu-item" type="button" data-content="moment">
+                <span class="icon-glow" aria-hidden="true">🕰️</span>
+                <p>Pesan</p>
+            </button>
+            <button class="menu-item" type="button" data-content="playlist">
+                <span class="icon-glow" aria-hidden="true">🎙️</span>
+                <p>Audio</p>
+            </button>
+            <button class="menu-item" type="button" data-content="gift">
+                <span class="icon-glow" aria-hidden="true">🎁</span>
+                <p>Gift</p>
+            </button>
+        </div>
+    </div>
+
+    <div id="page-content" class="page hidden">
+        <button id="back-btn" class="back-btn" type="button">BACK ◀</button>
+        <div id="content-area"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
